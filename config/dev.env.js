@@ -4,6 +4,7 @@ var prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   port: 3000,
+  facebookAppID: '',
   uri: 'http://dev.myapp.io',
   apiUrl: 'http://localhost:8888',
 })

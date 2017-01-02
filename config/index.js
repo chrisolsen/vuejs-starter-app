@@ -2,6 +2,9 @@
 var path = require('path')
 
 module.exports = {
+  getEnv: function() {
+    return !!window.location.port ? this.dev.env : this.build.env
+  },
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
