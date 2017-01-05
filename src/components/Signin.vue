@@ -7,7 +7,7 @@
         <form class="signin__form" v-show="isReady()">
           <FacebookLogin v-on:click="signinWithFacebook" />
         </form>
-        <spinner :size="26" :color="spinnerColor" v-show="showSpinner()" />
+        <Spinner :size="26" :color="spinnerColor" v-show="showSpinner()" />
       </div>
     </div>
   </div>
@@ -15,8 +15,8 @@
 
 <script>
 import Session from '../lib/session'
-import {Auth, Accounts} from '../lib/api'
-import spinner from './common/Spinner'
+import { Auth, Accounts } from '../lib/api'
+import Spinner from './common/Spinner'
 import FacebookLogin from './common/FacebookLogin'
 
 const STATE_INIT = 0
@@ -25,14 +25,14 @@ const STATE_SIGNING_IN = 2
 
 export default {
   components: {
-    spinner,
-    FacebookLogin
+    Spinner,
+    FacebookLogin,
   },
   data() {
     return {
       spinnerColor: "#000",
       showFacebookButton: false,
-      state: STATE_INIT
+      state: STATE_INIT,
     }
   },
 
@@ -45,7 +45,7 @@ export default {
         return
       }
       if (typeof window.FB === 'undefined' || window.FB == null) {
-        attemptCount++
+        attemptCount += 1
         setTimeout(fn, 1000)
         return
       }
@@ -80,7 +80,7 @@ export default {
           const token = response.authResponse.accessToken
           this.authenticateUser(userId, token)
         }
-      }, {scope: "email,public_profile"})
+      }, { scope: "email,public_profile" })
     },
 
     authenticateUser(userId, accessToken) {
@@ -92,8 +92,8 @@ export default {
           if (err.response.status === 401) {
             // fetch facebook account details
             window.FB.api("/me?fields=name,id,first_name,last_name,email,gender,location,locale,timezone,picture.width(800)", (user) => {
-              let profileUrl = user.picture.data.url
-              let data = {
+              const profileUrl = user.picture.data.url
+              const data = {
                 account: {
                   name: user.name,
                   firstName: user.first_name,
@@ -102,13 +102,13 @@ export default {
                   gender: user.gender,
                   location: user.location,
                   timezone: user.timezone,
-                  locale: user.locale
+                  locale: user.locale,
                 },
                 credentials: {
                   providerId: user.id,
                   providerName: "facebook",
-                  providerToken: accessToken
-                }
+                  providerToken: accessToken,
+                },
               }
 
               // create account, sign user in and redirect
@@ -118,12 +118,12 @@ export default {
                   account = a
                   return Auth.authenticate(userId, accessToken)
                 })
-                .then(sessionToken => {
-                  return Session.setToken(sessionToken)
-                })
-                .then(() => {
-                  return Accounts.setProfileImage(account.key, profileUrl)
-                })
+                .then(sessionToken => (
+                  Session.setToken(sessionToken)
+                ))
+                .then(() => (
+                  Accounts.setProfileImage(account.key, profileUrl)
+                ))
                 .then(() => {
                   this.$router.replace("/")
                 })
@@ -137,8 +137,8 @@ export default {
           this.state = STATE_READY
           this.error = "Failed to login"
         })
-    }
-  }
+    },
+  },
 }
 </script>
 

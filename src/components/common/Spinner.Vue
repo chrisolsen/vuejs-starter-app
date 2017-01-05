@@ -10,7 +10,7 @@
 export default {
   props: [
     'size',
-    'color'
+    'color',
   ],
 
   computed: {
@@ -20,21 +20,21 @@ export default {
 
     cColor() {
       return typeof this.color === "undefined" ? "#666" : this.color
-    }
+    },
   },
 
   created() {
     this.baseStyle = {
-      "line-height": this.cSize + "px"
+      "line-height": `${this.cSize}px`,
     }
 
-    let dotSize = this.cSize * 0.4 + "px"
+    const dotSize = `${this.cSize * 0.4}px`
     this.dotStyle = {
       "background-color": this.cColor,
       width: dotSize,
-      height: dotSize
+      height: dotSize,
     }
-  }
+  },
 }
 </script>
 
@@ -42,7 +42,7 @@ export default {
   .sk-three-bounce {
     text-align: center;
   }
-  
+
   .sk-child {
     animation-name: sk-three-bounce;
     animation-timing-function: ease-in-out;
@@ -52,15 +52,15 @@ export default {
     border-radius: 100%;
     display: inline-block;
   }
-  
+
   .sk-bounce1 {
     animation-delay: -0.32s;
   }
-  
+
   .sk-bounce2 {
     animation-delay: -0.16s;
   }
-  
+
   @keyframes sk-three-bounce {
     0%,
     80%,
