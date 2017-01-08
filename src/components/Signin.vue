@@ -33,6 +33,7 @@ export default {
       spinnerColor: "#000",
       showFacebookButton: false,
       state: STATE_INIT,
+      error: null,
     }
   },
 
