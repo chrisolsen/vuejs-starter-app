@@ -1,2 +1,27 @@
-$primaryTextColor: #222;
-$dividerColor: #fafafa;
+/*private color names*/
+$_white: #FFFFFF;
+$_gray: #CCCCCC;
+
+/*theme colors*/
+$primaryDarkColor: #673AB7;
+$primaryColor:#512DA8;
+$primaryLightColor: #C5CAE9;
+$accentColor: #FF4081;
+$primaryTextColor: #333333;
+$secondaryTextColor: #999999;
+
+$primarySectionBGColor: lighten($_gray, 15%);
+$darkSectionBGColor: lighten($_gray, 7%);
+$lightSectionBGColor: lighten($_gray, 20%);
+
+$successTextColor: #4F8A10;
+$successBGColor: #DFF2BF;
+$errorTextColor: #D8000C;
+$errorBGColor: #FFBABA;
+$warningTextColor: #9F6000;
+$warningBGColor: #FEEFB3;
+
+$dividerColor: $_gray;
+$iconTextColor: $_white;
+$buttonTextColor: $_white;
+$panelHeaderColor: $_white;
