@@ -12,11 +12,10 @@ import Session from './lib/session'
 import { Account } from './lib/api'
 import config from '../config'
 
-const settings = config[window.location.port ? "dev" : "build"]
+const env = config.getEnv()
 
 // axios config
-axios.defaults.baseURL = settings.env.url
-
+axios.defaults.baseURL = env.apiUrl
 // attach session token to each request
 axios.interceptors.request.use(c => {
   if (Session.isAuthenticated()) {
