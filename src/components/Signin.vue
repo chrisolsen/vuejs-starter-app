@@ -84,7 +84,13 @@ export default {
     },
 
     authenticateUser(userId, accessToken) {
-      Auth.authenticate(userId, accessToken)
+      let credentials = {
+        providerId: userId,
+        providerName: "facebook",
+        providerToken: accessToken
+      }
+
+      Auth.authenticate(credentials)
         .then((sessionToken) => {
           Session.setToken(sessionToken)
           this.$router.replace("/")
@@ -104,25 +110,20 @@ export default {
                   timezone: user.timezone,
                   locale: user.locale,
                 },
-                credentials: {
-                  providerId: user.id,
-                  providerName: "facebook",
-                  providerToken: accessToken,
-                },
+                credentials,
               }
 
               // create account, sign user in and redirect
-              let account = null
               Accounts.create(data)
                 .then(a => {
-                  account = a
-                  return Auth.authenticate(userId, accessToken)
+                  credentials.accountKey = a.key
+                  return Auth.authenticate(credentials)
                 })
                 .then(sessionToken => (
                   Session.setToken(sessionToken)
                 ))
                 .then(() => (
-                  Accounts.setProfileImage(account.key, profileUrl)
+                  Accounts.setProfileImage(credentials.accountKey, profileUrl)
                 ))
                 .then(() => {
                   this.$router.replace("/")

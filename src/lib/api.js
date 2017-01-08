@@ -22,7 +22,7 @@ export class Account {
 }
 
 export class Auth {
-  static authenticate(userId, accessToken) {
-    return http("POST", "/auth", { userId, accessToken })
+  static authenticate(credentials) {
+    return http("POST", "/auth", credentials)
   }
 }
