@@ -37,6 +37,7 @@ const router = new VueRouter({
 const publicRoutes = [
   'root',
   'signIn',
+  'hello',
 ]
 
 // auth
