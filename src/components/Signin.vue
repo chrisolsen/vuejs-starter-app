@@ -85,10 +85,10 @@ export default {
     },
 
     authenticateUser(userId, accessToken) {
-      let credentials = {
+      const credentials = {
         providerId: userId,
         providerName: "facebook",
-        providerToken: accessToken
+        providerToken: accessToken,
       }
 
       Auth.authenticate(credentials)
