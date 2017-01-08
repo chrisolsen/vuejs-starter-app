@@ -10,7 +10,7 @@ export default {
   props: [
     "type",   // success || error || warning || info
     "message",
-    "duration"
+    "duration",
   ],
   created() {
     if (this.duration > 0) {
@@ -22,8 +22,8 @@ export default {
   methods: {
     close() {
       this.$store.commit("message", null)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -34,25 +34,25 @@ export default {
     padding: 1rem;
     margin: 1rem;
   }
-  
+
   .content {
     flex: 1 1 auto;
   }
-  
+
   .close {
     flex: 0 0 auto;
   }
-  
+
   .success {
     background: $successBGColor;
     color: $successTextColor;
   }
-  
+
   .error {
     background: $errorBGColor;
     color: $errorTextColor;
   }
-  
+
   .warning {
     background: $warningBGColor;
     color: $warningTextColor;
