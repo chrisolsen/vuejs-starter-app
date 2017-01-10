@@ -136,4 +136,5 @@ export default {
 <style>
 @import './scss/pure.css';
 @import './scss/sidebar.css';
+@import './scss/pure_custom';
 </style>

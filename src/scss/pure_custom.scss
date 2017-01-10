@@ -1,0 +1,39 @@
+html {
+  font-family: "Proxima Nova Regular","Segoe UI",Roboto,"Droid Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  background: #1f8dd6;
+  border-bottom: 0px;
+  line-height: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#menu .pure-menu .pure-menu-heading.title {
+  margin: 0;
+  padding: 0 0 0 0.6em;
+  line-height: 3rem;
+}
+
+.user-photo {
+  flex: 0 0 2.4rem;
+  border-radius: 999px;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0.3rem;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.menu-link {
+  background: transparent;
+  padding: 2.2em 1.6em;
+}
+.menu-link:hover,
+.menu-link:focus {
+  background: rgba(0,0,0,0.1);
+}
