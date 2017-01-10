@@ -19,6 +19,9 @@
     </div>
 
     <div id="main">
+      <header class="header">
+        <div class="user-photo" v-bind:style="{ backgroundImage: `url(${currentUser.photoUrl})` }" v-if="currentUser.photoUrl" alt="">
+      </header>
       <div class="content">
         <Message v-bind:type="flash.type" v-bind:message="flash.message" v-bind:duration="flash.duration" />
         <transition name="fade">
