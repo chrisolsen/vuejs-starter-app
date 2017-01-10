@@ -1,4 +1,5 @@
 import axios from 'axios'
+import config from "../../config"
 
 // helper to eliminate repeated code
 const http = function dohttp(method, url, data) {
@@ -12,7 +13,12 @@ const http = function dohttp(method, url, data) {
   })
 }
 
-export default {}
+export class Image {
+  static get(name, width = 0, height = 0) {
+    const baseUrl = config.getEnv().imageApiUrl
+    return `${baseUrl}/your_path/images?name=${name}&w=${width}&h=${height}`
+  }
+}
 
 export class Account {
     // GET /v1/me
